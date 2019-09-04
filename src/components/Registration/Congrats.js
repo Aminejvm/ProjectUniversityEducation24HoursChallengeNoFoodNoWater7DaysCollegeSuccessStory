@@ -1,9 +1,12 @@
 import React from "react";
+import { Result } from "antd";
+
 const Congrats = () => (
-  <div>
-    <h1>Felicitations!</h1>
-    <p>Check your email for further clarificationa!</p>
-  </div>
+  <Result
+    status="success"
+    title="Your subscription is successful"
+    subTitle="Check email for further instructions"
+  ></Result>
 );
 
 export default Congrats;

@@ -1,10 +1,24 @@
 @import "~antd/dist/antd.css";
+* {
+  box-sizing: border-box;
+}
 .logo {
   width: 120px;
   height: 31px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px 24px 16px 0;
   float: left;
+}
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 360px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
 }
 .input {
   -webkit-box-sizing: border-box;
