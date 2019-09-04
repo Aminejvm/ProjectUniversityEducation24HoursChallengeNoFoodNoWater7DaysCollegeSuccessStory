@@ -1,7 +1,7 @@
 import React from "react";
-import { List, Button, Skeleton, Avatar } from "antd";
+import { List, Button, Skeleton, Card } from "antd";
+import { Box } from "atomic-layout";
 import axios from "axios";
-
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 const getData = callback => {
@@ -17,22 +17,26 @@ const ListEngine = () => {
   });
 
   const onLoadMore = () => {
-    const newArray = new Array(count);
     setFetch({
       loading: true,
-      list: data
+      list: data.concat(
+        [...new Array(count)].map(() => ({ loading: true, name: {} }))
+      )
     });
     getData(res => {
-      const data = data.concat(res.data);
-      setFetch({ data, list: data, loading: false });
+      const newData = data.concat(res.data.results);
+      setFetch({ data: newData, list: data, loading: false });
     });
   };
 
   React.useEffect(() => {
     getData(res =>
-      setFetch({ initLoading: false, data: res.data, list: res.data })
+      setFetch({
+        initLoading: false,
+        data: res.data.results,
+        list: res.data.results
+      })
     );
-    console.log(data);
   }, []);
 
   const LoadMore =
@@ -50,26 +54,34 @@ const ListEngine = () => {
     ) : null;
 
   return (
-    <List
-      loading={initLoading}
-      itemLayout="horizontal"
-      loadMore={LoadMore}
-      dataSource={list}
-      renderItem={item => (
-        <List.Item>
-          <Skeleton avatar title={false} loading={item.loading} active>
-            <List.Item.Meta
-              avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              }
-              title={<a href="https://ant.design">{item.name.last}</a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            />
-            <div>content</div>
-          </Skeleton>
-        </List.Item>
-      )}
-    ></List>
+    <Box
+      marginHorizontal="auto"
+      paddingHorizontal={32}
+      width="80%"
+      marginTop={64}
+    >
+      <List
+        grid={{
+          gutter: 16,
+          xs: 1,
+          sm: 2,
+          md: 4,
+          lg: 4,
+          xl: 6,
+          xxl: 3
+        }}
+        loading={initLoading}
+        loadMore={LoadMore}
+        dataSource={list}
+        renderItem={item => (
+          <List.Item>
+            <Skeleton avatar title={false} loading={item.loading} active>
+              <Card title={item.name.last}>to suptem or not to suptem</Card>
+            </Skeleton>
+          </List.Item>
+        )}
+      ></List>
+    </Box>
   );
 };
 

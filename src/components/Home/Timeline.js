@@ -10,7 +10,7 @@ const TimelineEngine = () => (
   <Composition
     areas={template}
     marginTop={64}
-    gap={32}
+    gap={64}
     paddingHorizontal={32}
     width="80%"
     marginHorizontal="auto"

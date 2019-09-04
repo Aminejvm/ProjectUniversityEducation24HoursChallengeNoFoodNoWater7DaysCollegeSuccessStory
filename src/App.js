@@ -4,11 +4,19 @@ import { Box } from "atomic-layout";
 import Registration from "./components/Registration";
 import LandingPage from "./components/Home";
 import Search from "./components/Search";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import NotFound from "./components/404";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
-
+const count = 3;
+const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 const { Header, Content, Footer } = Layout;
 function App() {
+  React.useEffect(() => {
+    axios.get(fakeDataUrl).then(res => {
+      console.log(res);
+    });
+  }, []);
   return (
     <Router>
       <Layout>
@@ -44,10 +52,13 @@ function App() {
               minHeight: "calc(100vh - 150px)"
             }}
           >
-            <Route exact path="/" component={LandingPage}></Route>
-            <Route exact path="/signup" component={Registration}></Route>
-            <Route exact path="/search" component={Search}></Route>
-            <Route exact path="/search/:query" component={Search}></Route>
+            <Switch>
+              <Route exact path="/" component={LandingPage}></Route>
+              <Route exact path="/signup" component={Registration}></Route>
+              <Route exact path="/search" component={Search}></Route>
+              <Route exact path="/search/:query" component={Search}></Route>
+              <Route component={NotFound}></Route>
+            </Switch>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
