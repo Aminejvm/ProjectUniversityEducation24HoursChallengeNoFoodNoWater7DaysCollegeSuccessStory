@@ -5,6 +5,7 @@ import Registration from "./components/Registration";
 import LandingPage from "./components/Home";
 import Search from "./components/Search";
 import NotFound from "./components/404";
+import Univ from "./components/Univ";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
@@ -45,7 +46,13 @@ function App() {
             </Menu.Item>
           </Menu>
         </Box>
-        <Content style={{ padding: "0px 48px", marginTop: "78px" }}>
+        <Content
+          style={{
+            padding: "0px 48px",
+            marginTop: "78px",
+            paddingBottom: "32px"
+          }}
+        >
           <div
             style={{
               backgroundColor: "#fff",
@@ -57,6 +64,7 @@ function App() {
               <Route exact path="/signup" component={Registration}></Route>
               <Route exact path="/search" component={Search}></Route>
               <Route exact path="/search/:query" component={Search}></Route>
+              <Route exact path="/univ" component={Univ}></Route>
               <Route component={NotFound}></Route>
             </Switch>
           </div>
