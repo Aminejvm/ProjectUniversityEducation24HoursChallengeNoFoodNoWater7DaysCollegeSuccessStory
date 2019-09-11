@@ -2,6 +2,9 @@
 * {
   box-sizing: border-box;
 }
+body {
+  background-color: white !important;
+}
 .logo {
   width: 120px;
   height: 31px;

@@ -3,14 +3,19 @@ import { Composition, Box } from "atomic-layout";
 import { ReactComponent as HeroBack } from "./heroBack.svg";
 import { Typography, Button } from "antd";
 const { Title, Paragraph } = Typography;
-const template = `
+const templateMd = `
     block svg
   `;
+const template = `
+    block 
+    svg
+`;
 const Hero = () => {
   return (
     <Composition
       minHeight="calc(100vh - 78px)"
       areas={template}
+      areasLg={templateMd}
       templateCols="512px 1fr"
     >
       {({ Block, Svg, Search }) => (
@@ -21,10 +26,10 @@ const Hero = () => {
             flexDirection="column"
             paddingLeft="32px"
           >
-            <Title level={1} style={{ fontSize: "3rem", color: "#0d0b6d" }}>
+            <Title level={1} style={{ fontSize: "3.5rem", color: "#398aff" }}>
               Follow your studies in Morocco
             </Title>
-            <Paragraph style={{ color: "#1890ff", opacity: 0.6 }}>
+            <Paragraph style={{ fontSize: "1.3rem", opacity: 0.6 }}>
               Make your journey easy with all resources you need
             </Paragraph>
             <Button

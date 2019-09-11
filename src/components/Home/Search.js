@@ -12,7 +12,7 @@ const SearchEngine = ({ history }) => {
         placeholder="input search text"
         enterButton="Search"
         size="large"
-        style={{ width: "50%" }}
+        style={{ width: "100%" }}
         onSearch={value => history.push(`/search/${value}`)}
       />
     </Box>

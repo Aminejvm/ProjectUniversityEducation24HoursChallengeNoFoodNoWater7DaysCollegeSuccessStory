@@ -1,6 +1,7 @@
 import React from "react";
 import { List, Button, Skeleton, Card } from "antd";
 import { Box } from "atomic-layout";
+import { useFetch } from "../../lib";
 import axios from "axios";
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
@@ -9,6 +10,9 @@ const getData = callback => {
 };
 
 const ListEngine = () => {
+  const [cLoading, cData, cError] = useFetch(fakeDataUrl);
+  console.log(cLoading);
+  console.log(cData);
   const [{ initLoading, loading, data, list }, setFetch] = React.useState({
     initLoading: true,
     loading: false,
@@ -65,8 +69,8 @@ const ListEngine = () => {
           gutter: 16,
           xs: 1,
           sm: 2,
-          md: 4,
-          lg: 4,
+          md: 2,
+          lg: 2,
           xl: 6,
           xxl: 3
         }}

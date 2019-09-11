@@ -1,20 +1,27 @@
 import React from "react";
 import { Carousel, Timeline, Typography } from "antd";
 import { Composition } from "atomic-layout";
-const template = `
+const templateLg = `
     partner time
 `;
+const template = `
+    partner
+    time
+  `;
 const { Title } = Typography;
 
 const TimelineEngine = () => (
   <Composition
     areas={template}
+    areasLg={templateLg}
     marginTop={64}
     gap={64}
     paddingHorizontal={32}
     width="80%"
+    widthLg="100%"
     marginHorizontal="auto"
-    templateCols="70% max-content"
+    templateCols="100% max-content"
+    templateColsLg="70% max-content"
   >
     {({ Partner, Time }) => (
       <>

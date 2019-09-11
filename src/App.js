@@ -20,7 +20,7 @@ function App() {
   }, []);
   return (
     <Router>
-      <Layout>
+      <Layout style={{ backgroundColor: "white" }}>
         <Box
           as={Header}
           flex
