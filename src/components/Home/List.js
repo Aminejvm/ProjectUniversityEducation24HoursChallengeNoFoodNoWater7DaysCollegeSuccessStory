@@ -1,18 +1,16 @@
 import React from "react";
 import { List, Button, Skeleton, Card } from "antd";
 import { Box } from "atomic-layout";
-import { useFetch } from "../../lib";
+import { truncate } from "../../lib";
+import { Link } from "react-router-dom";
 import axios from "axios";
 const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
+const fakeDataUrl = `http://localhost:2000/university`;
 const getData = callback => {
   axios.get(fakeDataUrl).then(res => callback(res));
 };
 
 const ListEngine = () => {
-  const [cLoading, cData, cError] = useFetch(fakeDataUrl);
-  console.log(cLoading);
-  console.log(cData);
   const [{ initLoading, loading, data, list }, setFetch] = React.useState({
     initLoading: true,
     loading: false,
@@ -28,7 +26,7 @@ const ListEngine = () => {
       )
     });
     getData(res => {
-      const newData = data.concat(res.data.results);
+      const newData = data.concat(res.data.products);
       setFetch({ data: newData, list: data, loading: false });
     });
   };
@@ -37,8 +35,8 @@ const ListEngine = () => {
     getData(res =>
       setFetch({
         initLoading: false,
-        data: res.data.results,
-        list: res.data.results
+        data: res.data.products,
+        list: res.data.products
       })
     );
   }, []);
@@ -80,7 +78,20 @@ const ListEngine = () => {
         renderItem={item => (
           <List.Item>
             <Skeleton avatar title={false} loading={item.loading} active>
-              <Card title={item.name.last}>to suptem or not to suptem</Card>
+              <Link to={`/univ/${item._id}`}>
+                <Card
+                  cover={
+                    <img
+                      style={{ height: "300px" }}
+                      alt={item.uniname}
+                      src={item.uniimg}
+                    />
+                  }
+                  title={item.uniname}
+                >
+                  {truncate(item.uniabout, 450)}
+                </Card>
+              </Link>
             </Skeleton>
           </List.Item>
         )}

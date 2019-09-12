@@ -28,7 +28,9 @@ function App() {
           alignItems="center"
           style={{ position: "fixed", zIndex: 1, width: "100%" }}
         >
-          <h1>Edu</h1>
+          <Link to="/">
+            <h1 style={{ color: "white" }}>UniSearch</h1>
+          </Link>
           <Menu
             theme="dark"
             mode="horizontal"
@@ -39,10 +41,10 @@ function App() {
               <Link to="/signup">Signup</Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="/login">Login</Link>
+              <Link to="/search">Search</Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="/contactus">Contact Us</Link>
+              <Link to="/privacy">Privacy</Link>
             </Menu.Item>
           </Menu>
         </Box>
@@ -64,7 +66,7 @@ function App() {
               <Route exact path="/signup" component={Registration}></Route>
               <Route exact path="/search" component={Search}></Route>
               <Route exact path="/search/:query" component={Search}></Route>
-              <Route exact path="/univ" component={Univ}></Route>
+              <Route exact path="/univ/:id" component={Univ}></Route>
               <Route component={NotFound}></Route>
             </Switch>
           </div>

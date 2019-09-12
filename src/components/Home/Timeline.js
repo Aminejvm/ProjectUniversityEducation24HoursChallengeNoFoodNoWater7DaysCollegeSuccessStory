@@ -17,10 +17,10 @@ const TimelineEngine = () => (
     marginTop={64}
     gap={64}
     paddingHorizontal={32}
-    width="80%"
+    width="100%"
     widthLg="100%"
     marginHorizontal="auto"
-    templateCols="100% max-content"
+    templateCols="100% 0%"
     templateColsLg="70% max-content"
   >
     {({ Partner, Time }) => (

@@ -220,8 +220,7 @@ const initValues = {
   email: "",
   prenom: "",
   nom: "",
-  country: "",
-  adress: "",
+  address: "",
   phone: "+212",
   country: "Morocco",
   licence: true
@@ -231,9 +230,9 @@ const InscriptionSchema = Yup.object().shape({
   email: Yup.string().required("This input is required"),
   prenom: Yup.string().required("This input is required"),
   nom: Yup.string().required("This input is required"),
-  adress: Yup.string()
+  address: Yup.string()
     .required("This input is required")
-    .min(4, "too short for an adress"),
+    .min(4, "too short for an address"),
   phone: Yup.number("Only numbers allowed here").min(
     7,
     "too short for a number"
@@ -244,8 +243,15 @@ const Inscription = props => {
     <Formik
       initialValues={initValues}
       validationSchema={InscriptionSchema}
-      onSubmit={values => {
-        alert(JSON.stringify(values, null, 2));
+      onSubmit={async ({ email, prenom, nom, country, address, phone }) => {
+        await console.log(
+          JSON.stringify(
+            { email, prenom, nom, country, address, phone },
+            null,
+            2
+          )
+        );
+        props.next();
       }}
     >
       <Box as={Form} flex alignItems="center" flexDirection="column">
@@ -277,9 +283,9 @@ const Inscription = props => {
         </BoxField>
         <BoxField>
           <Label required>address:</Label>
-          <Field type="text" name="adress" className="input"></Field>
+          <Field type="text" name="address" className="input"></Field>
         </BoxField>
-        <ErrorMessage name="adress"></ErrorMessage>
+        <ErrorMessage name="address"></ErrorMessage>
         <BoxField>
           <Label required>Phone:</Label>
           <Field type="tel" name="phone" className="input"></Field>

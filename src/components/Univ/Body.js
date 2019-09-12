@@ -9,7 +9,7 @@ const Wrapper = styled(Box)`
   max-width: 712px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 `;
-const Body = () => {
+const Body = ({ title, paragraph }) => {
   return (
     <Wrapper
       flex
@@ -20,29 +20,8 @@ const Body = () => {
     >
       <Icon style={{ fontSize: "2rem", marginBottom: "24px" }} type="down" />
       <Title level={1}>Introduction :</Title>
-      <Title level={2}> MSHSBCS Casablanca en bref</Title>
-      <Paragraph>
-        MSHSBCS Casablanca est un établissement d’enseignement supérieur privé,
-        créé en 2005 et spécialisé dans le domaine du business et d’ingénierie.
-      </Paragraph>
-      <Paragraph>
-        MSHSBCS Casablanca est un établissement d’enseignement supérieur privé,
-        créé en 2005 et spécialisé dans le domaine du business et d’ingénierie.
-      </Paragraph>
-      <Paragraph>
-        MSHSBCS Casablanca est un établissement d’enseignement supérieur privé,
-        créé en 2005 et spécialisé dans le domaine du business et d’ingénierie.
-      </Paragraph>
-      <Title level={1}>Filières</Title>
-      <Paragraph>Computer Science</Paragraph>
-      <Paragraph>
-        MSHSBCS Casablanca est un établissement d’enseignement supérieur privé,
-        créé en 2005 et spécialisé dans le domaine du business et d’ingénierie.
-      </Paragraph>
-      <Paragraph>
-        MSHSBCS Casablanca est un établissement d’enseignement supérieur privé,
-        créé en 2005 et spécialisé dans le domaine du business et d’ingénierie.
-      </Paragraph>
+      <Title level={2}> {title}</Title>
+      <Paragraph>{paragraph}</Paragraph>
     </Wrapper>
   );
 };
