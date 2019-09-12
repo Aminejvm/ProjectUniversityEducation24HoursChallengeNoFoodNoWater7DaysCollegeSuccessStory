@@ -54,9 +54,7 @@ const SearchEngine = ({ match: { params }, history }) => {
                     />
                   }
                   title={item.uniname}
-                >
-                  {truncate(item.uniabout, 450)}
-                </Card>
+                ></Card>
               </Link>
             </Skeleton>
           </List.Item>
