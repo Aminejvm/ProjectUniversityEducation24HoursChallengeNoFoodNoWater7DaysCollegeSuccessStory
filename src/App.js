@@ -2,6 +2,8 @@ import React from "react";
 import { Layout, Menu } from "antd";
 import { Box } from "atomic-layout";
 import Registration from "./components/Registration";
+import Contact from "./components/Contact";
+import Privacy from "./components/privacy";
 import LandingPage from "./components/Home";
 import Search from "./components/Search";
 import NotFound from "./components/404";
@@ -46,6 +48,9 @@ function App() {
             <Menu.Item key="3">
               <Link to="/privacy">Privacy</Link>
             </Menu.Item>
+            <Menu.Item key="4">
+              <Link to="/contact">Contact</Link>
+            </Menu.Item>
           </Menu>
         </Box>
         <Content
@@ -63,6 +68,8 @@ function App() {
           >
             <Switch>
               <Route exact path="/" component={LandingPage}></Route>
+              <Route exact path="/contact" component={Contact}></Route>
+              <Route exact path="/privacy" component={Privacy}></Route>
               <Route exact path="/signup" component={Registration}></Route>
               <Route exact path="/search" component={Search}></Route>
               <Route exact path="/search/:query" component={Search}></Route>
@@ -72,7 +79,7 @@ function App() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Edu Solu ©2019 Created by ExSuptem
+          UniSearch ©2019 Created by Suptem
         </Footer>
       </Layout>
     </Router>
